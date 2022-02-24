@@ -1,46 +1,40 @@
 import java.awt.*;
 import java.applet.*;
-  
+import java.util.*;
 public class MarqueeString extends Applet implements Runnable {
     private String display;
-    private int x, y, flag;
-    Thread t;
+    private int x, y;
+    Thread th;
   
     public void init()
     {
-        display = "GeeksforGeeks";
+        display = "Java World";
         x = 100;
         y = 100;
-        flag = 1;
-  
-        t = new Thread(this, "MyThread");
-  
-        t.start();
+        th = new Thread(this);
+        th.start();
     }
   
     public void update()
     {
-  
-        x = x + 10 * flag;
+        x = x + 30;
         if (x > 300)
-            flag = -1;
-        if (x < 100)
-            flag = 1;
+           x=-50;
+
     }
   
-    // run
+
     public void run()
     {
   
         while (true) {
             repaint();
-  
             update();
             try {
                 Thread.sleep(1000);
             }
-            catch (InterruptedException ie) {
-                System.out.println(ie);
+            catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

@@ -20,7 +20,7 @@ public void run(){
 while(true){
 d = new Date();
 repaint();
-try{Thread.sleep(1000);}
+try{Thread.sleep(999);}
 catch(Exception e) {e.printStackTrace();}
 }
 }

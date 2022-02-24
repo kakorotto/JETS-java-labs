@@ -2,52 +2,53 @@ import java.applet.*;
 import java.awt.*;
 
 public class BouncingBall extends Applet implements Runnable {
-  // x,y coordinates and radius of the circle.
-  int x = 150, y = 50, r = 20;
-  int dx = 11, dy = 7;
 
-  // create thread.
-  Thread t;
-  boolean stopFlag;
+  int x = 295, y = 295, radius = 50, xChange = 11, yChange =11;
 
-  // Function to start thread.
+  Thread th;
+  boolean stopFlag,xFlag,yFlag;
+
   public void start() {
-    t = new Thread(this);
+    th = new Thread(this);
     stopFlag = false;
-    t.start();
+    th.start();
+    th.setPriority(1);
   }
 
-  // Draw cicle from its present position.
+
   public void paint(Graphics g) {
-    g.setColor(Color.red);
-    g.fillOval(x - r, y - r, r * 2, r * 2);
-  }
+    g.setColor(Color.RED);
+    g.fillOval(x - radius, y - radius, 2*radius, 2*radius);
+  } 
 
-  // function to move the image.
   public void run() {
     while (true) {
       if (stopFlag)
         break;
-      // Bounce if we've hit an edge.
-      if ((x - r + dx < 0) || (x + r + dx > bounds().width)) dx = -dx;
-      if ((y - r + dy < 0) || (y + r + dy > bounds().height)) dy = -dy;
-      // Move the circle.
-      x += dx;
-      y += dy;
+
+     if ((x - radius + xChange <= 0) || (x + radius + xChange >= bounds().width)) xChange = -xChange;
+      if ((y - radius + yChange <= 0) || (y + radius + yChange >= bounds().height)) yChange = -yChange;
+   if(x + radius + xChange >= bounds().width) { x--; xChange--;repaint();}
+   if(y + radius + yChange >= bounds().width) { y--; yChange--;repaint();}
+      x += xChange;
+      y += yChange;
+
+
+	//if(xFlag)
+	//{x++;if(x>=getWidth()- }
+	repaint();
 
       try {
         Thread.sleep(100);
       } catch (Exception e) {
         e.printStackTrace();
-      };
-      // print circle again n again.
-      repaint();
+      }
+      
     }
   }
 
-  // function to stop printing.
-  public void stop() {
-    stopFlag = true;
-    t = null;
-  }
+//  public void stop() {
+//    stopFlag = true;
+//    th = null;
+//  }
 }
