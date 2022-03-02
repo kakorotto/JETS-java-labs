@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Main">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                <MenuItem fx:id="newItem" mnemonicParsing="false" onAction="#onNew" text="New" />
+                <MenuItem fx:id="openItem" mnemonicParsing="false" onAction="#onOpen" text="Open" />
+                <MenuItem fx:id="saveItem" mnemonicParsing="false" onAction="#onSave" text="Save" />
+                <MenuItem fx:id="closeItem" mnemonicParsing="false" onAction="#onClose" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="undoItem"   onAction="#onUndo" mnemonicParsing="false" text="Undo" />
+              <MenuItem fx:id="cutItem"    onAction="#onCut" mnemonicParsing="false" text="Cut" />
+              <MenuItem fx:id="copyItem"   onAction="#onCopy" mnemonicParsing="false" text="Copy" />
+              <MenuItem fx:id="pasteItem"  onAction="#onPaste" mnemonicParsing="false" text="Paste" />
+              <MenuItem fx:id="deleteItem" onAction="#onDelete" mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="selectItem" onAction="#onSelect" mnemonicParsing="false" text="Select All" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="helpItem" onAction="#onAbout" mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TextArea fx:id="textAreaId" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
